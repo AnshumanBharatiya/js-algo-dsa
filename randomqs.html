@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+
+
+    <script>
+
+        // shift 1st 2 elementto the end of an array
+        function shiftArrayElement(array){
+            let k = 2;
+            for(let i=0; i<k; i++){
+                array.push(array.shift());
+            }
+            return array;
+        }
+        var ary = [8,1,2,3,4,5,6,7];
+        console.log(shiftArrayElement(ary));
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

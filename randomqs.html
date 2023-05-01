@@ -7,27 +7,555 @@
     <title>Document</title>
 </head>
 <body>
-    
-
-
-
-
-
 
 
 
     <script>
 
-        // shift 1st 2 elementto the end of an array
-        function shiftArrayElement(array){
-            let k = 2;
-            for(let i=0; i<k; i++){
-                array.push(array.shift());
-            }
-            return array;
-        }
-        var ary = [8,1,2,3,4,5,6,7];
-        console.log(shiftArrayElement(ary));
+
+
+
+
+
+
+
+
+        // QS - 1
+         // LEET CODE Day - 1;
+        // function twoSum(nums, target) {
+        //     // // applied for order array
+        //     // let left = 0;
+        //     // let right = nums.length - 1;
+        //     // while(left < right){
+        //     //     let total = nums[left] + nums[right];
+        //     //     if( total === target){
+        //     //         return [left, right];
+        //     //     }else if(total < target){
+        //     //         left++;
+        //     //     }else{
+        //     //         right--;
+        //     //     }
+        //     // }
+        //     // applied for order array and unordered array 
+        //     for (let i = 0; i < nums.length; i++) {
+        //         for (let j = i + 1; j < nums.length; j++) {
+        //             if (nums[i] + nums[j] === target) {
+        //                 return [i, j]
+        //             }
+        //         }
+        //     }
+        // };
+        // console.log(twoSum([3,2,4], 6));
+
+        // Better solution from leet code
+        // var twoSum = function(nums, target) {
+        //     //base
+        //     if(nums.length===2)return [0,1];
+        //     let memo = {};
+        //     for(let i=0; i<nums.length; i++){
+        //         let num2 = target - nums[i];
+        //         if(memo[num2] !== undefined){
+        //             return [memo[num2], i]
+        //         }
+        //         memo[nums[i]] = i;
+        //     }
+        // };
+
+
+        // QS - 2
+        // function isPalindrome(x) {
+        //     if(x < 0) return false;
+        //     let str = x.toString();
+        //     function helper(rcvStr){
+        //         if(rcvStr.length === 0) return rcvStr;
+        //         return helper(rcvStr.slice(1)) + rcvStr[0];
+        //     }
+        //     let newStr = helper(str);
+        //     if(newStr == str){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // };
+        // console.log(isPalindrome(-121));
+
+
+        // QS - 3
+        // function romanToInt(s){
+        //     let str = s.toUpperCase();
+        //     let romanObj = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000};
+        //     if(str.length === 0) return 0;
+        //     if(str.length === 1) return romanObj[str[0]];
+        //     let total = 0;
+        //     for(let i = 0; i<str.length; i++){
+        //       var a = romanObj[str.charAt(i)];
+        //       if(i+1 < str.length){
+        //         var b = romanObj[str.charAt(i + 1)];
+        //         if(a >= b){
+        //             total = total + a
+        //         }else{
+        //             total = total + b - a;
+        //             i++;
+        //         }
+        //       }else{
+        //         total = total + a;
+        //       }
+        //     }
+        //     return total;
+        // }
+
+
+        // // Better solution from leet code
+        // var romanToInt = function(str) {
+        //     var hashTable = {
+        //         'I': 1,
+        //         'V': 5,
+        //         'X': 10,
+        //         'L': 50,
+        //         'C': 100,
+        //         'D': 500,
+        //         'M': 1000
+        //     };
+        //     var num = 0;
+        //     for (let i = 0; i < str.length; i += 1) {
+        //         if (hashTable[str[i]] < hashTable[str[i + 1]]) {
+        //             num += (hashTable[str[i + 1]] - hashTable[str[i]]);
+        //             i += 1;
+        //             continue;
+        //         }
+        //         num += hashTable[str[i]];
+        //     }
+
+        //     return num;
+        // };
+        // console.log(romanToInt("LVIII"));
+
+
+        // QS - 4
+        // function strStr(haystack, needle){
+        //     // if(needle.length === 0) return -1;
+        //     // if(needle.length > haystack.length) return -1;
+        //     return haystack.indexOf(needle);    
+        // }
+        // console.log(strStr("leetcode", "leeto"));
+
+
+        // QS - 5
+        // function plusOne(digits){
+        //         let digiStr =  digits.toString().replaceAll(',','');
+        //         let nu =  BigInt(digiStr);
+        //         let vat = nu + BigInt(1);
+        //         return String(vat).split('').map(Number);
+        // }
+
+        //     // Better Solution
+        //     var plusOne = function(digits) {
+        //         return (BigInt(digits.join("")) + BigInt(1)).toString().split("")
+        //     };
+
+        // console.log(plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]));
+
+
+        // QS - 6
+        // function removeDuplicates(nums){
+        //     let start = 0;
+        //     let next = 1;
+        //     while(next <= nums.length){
+        //     if(nums[start] !== nums[next]){
+        //         start++;
+        //         next++;     
+        //         }else{
+        //             nums.splice(start,1);
+        //         }
+        //     }
+        //     return nums;
+        //     // let arrayUniq =  new Set(nums);
+        //     // return arrayUniq.size;
+        // }
+
+        // //  Some Better Solutions
+        // function removeDuplicates(nums){
+        //     let i = 0;
+        //     for (let j = 1; j < nums.length; j++) {
+        //         if (nums[j] != nums[i]) 
+        //             nums[++i] = nums[j];
+        //     }
+        //     return ++i;
+        // }
+
+
+        // function removeDuplicates(nums){
+        //     if(nums.length==0 ){
+        //         return 0;
+        //     }
+        //     let c=1;
+        //     for (let i=0;i < nums.length-1 ;i++){
+        //         if(nums[i]<nums[i+1]){
+        //             nums[c]=nums[i+1];
+        //             c++
+        //         }
+        //     }
+        //     return c;
+        // }
+        // console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+
+
+        // QS - 7
+        // function searchInsert(nums, target) {
+        //     let left = 0;
+        //     let right = nums.length -1;
+        //     while(left <= right){
+        //         let middle = Math.floor((left+right)/2)
+        //         if(nums[middle] === target){
+        //             return middle
+        //         }else if(nums[middle] < target){
+        //             left = middle + 1
+        //         }else{
+        //             right = middle -1
+        //         }
+        //     }
+        //     return left;
+        // };
+        // console.log(searchInsert([1,3,5,6],4));
+
+
+        // QS - 8
+        // function mergeTwoLists(list1, list2){
+        //     let newArr = list1.concat(list2);
+        //     return newArr.sort()
+        // }
+
+        // function mergeTwoLists(list1, list2){
+        //     if(list1.length === 0 && list2.length === 0) return [];
+        //     if(list1.length === 0) return list2;
+        //     if(list2.length === 0) return list1;
+
+        //     let mergeList = [];
+        //     let i = 0;
+        //     let j = 0;
+
+        //     while(i < list1.length && j < list2.length){
+        //         if(list1[i] <= list2[j]){
+        //             mergeList.push(list1[i])
+        //             i++
+        //         }else{
+        //             mergeList.push(list2[j])
+        //             j++
+        //         }
+        //     }
+        //     while(i < list1.length){
+        //         mergeList.push(list1[i])
+        //         i++
+        //     }
+
+        //     while(j < list2.length){
+        //         mergeList.push(list2[j])
+        //         j++
+        //     }
+        //     return mergeList;
+        // }
+
+        // better solution from leet code
+        // var mergeTwoLists = function(l1, l2) {
+        //     if(!l1 || !l2) return l1 || l2
+        //     if(l1.val < l2.val){
+        //         l1.next = mergeTwoLists(l1.next, l2)
+        //         return l1
+        //     }
+        //     l2.next = mergeTwoLists(l1, l2.next)
+        //     return l2
+                
+        // };
+        // console.log(mergeTwoLists([1,2,4], [1,3,4]));
+
+
+        // QS - 9
+        // function removeElement(nums, val) {
+
+        //     // for(let i = 0; i<nums.length; i++){
+        //     //     if(nums[i] === val){
+        //     //         nums.splice(i,1);
+        //     //         i--;    
+        //     //     }
+        //     // }
+        //     // return nums.length;
+
+        //     let start = 0;
+        //     while(start <= nums.length){
+        //         if(nums[start] === val){
+        //             nums.splice(start,1); 
+        //             start--;
+        //         }else{
+        //             start++;
+        //         }
+        //     }
+        //     return nums.length;
+
+        // };
+        // console.log(removeElement([3,2,2,3], 3));
+
+
+
+        // QS - 10
+        // function isValid(str){
+        //     let paramObj = {'{':'}', '(':')', '[':']'};
+        //     let stack = [];
+        //     // for(let i=0; i<str.length; i++){
+        //     //     if(stack[i] === undefined && stack.length === 0){
+        //     //         stack.push(str[i]);
+        //     //     }else if(stack.length > 0 && paramObj[stack[stack.length - 1]] === str[i]){
+        //     //         stack.pop();
+        //     //     }else{
+        //     //         return false;
+        //     //     }
+        //     // }
+        //     // return true;
+        //     // This Program Failed in this test case "{[]}"
+
+        //     for(let char of str){
+        //         if(paramObj[char]){
+        //             stack.push(paramObj[char])
+        //         }else if(stack.length > 0 && stack[stack.length - 1] === char){
+        //             stack.pop()
+        //         }else{
+        //             return false;
+        //         }
+        //     }
+        //     return stack.length === 0
+        // }
+        // let s = `{[]}`;
+        // console.log(isValid(s));
+
+
+
+        // QS - 11
+        // function lengthOfLastWord(str){
+        //     let newArr = str.trim().split(" ");
+        //     let asd = newArr.reverse();
+        //     return asd[0].length;
+        // }
+
+        // // Better Solution bcz of time complexity
+        // function lengthOfLastWord(s){
+        //     let len=0, i=s.length-1;
+        //     while(i>=0 && s[i] == ' ') i--;
+        //     while(i>=0 && s[i] != ' ') {
+        //         len++;
+        //         i--;
+        //     }
+        //     return len;
+        // }
+        // console.log(lengthOfLastWord("luffy is still joyboy "));
+
+
+        // QS - 12
+        // function longestCommonPrefix(strs){
+
+        //     if(strs.length === 0) return "";
+        //     if(strs.length === 1) return strs[0];
+        //     if(new Set(strs).size === 1) return strs[0];
+
+        //     let result = "";
+        //     strs.sort();
+
+        //     let str1 =  strs[0];
+        //     let str2 =  strs[strs.length - 1];
+        //     for(let i = 0;  i < str1.length;  i++){
+        //         if( str2[ i] !=  str1[ i]){
+        //             return  result;
+        //         }
+        //         result += str2[ i];
+        //     }   
+        //     return result;
+
+        // }
+        // console.log(longestCommonPrefix(["flower","flow","flight"]));
+
+        // PHP Solutions
+        // function longestCommonPrefix($strs) {
+        //     $result = '';
+        //     if(count($strs) == 1) return $strs[0];
+        //     sort($strs);
+        //     $str1 = $strs[0];
+        //     $str2 = $strs[count($strs) - 1];
+        //     for($i = 0; $i < strlen($str1); $i++){
+        //         if($str2[$i] != $str1[$i]){
+        //             return $result;
+        //         }
+        //         $result .=$str2[$i];
+        //     }   
+        //     return $result;
+        // }
+
+
+        // QS - 13
+        // function mySqrt(x){
+        //     // for all number 
+        //     // OR
+        //     // return Math.sqrt(x);
+
+        //     // not for all number 
+        //     // for(let i = x; i > 0; i--){
+        //     //     if(i * i === x){
+        //     //        return i;
+        //     //     }
+        //     // }
+        //     // return x;
+
+        //     // not for all number // using binary search approach.
+        //     // if(x == 0) return 0;
+        //     // if(x == 1) return 1;
+        //     // let min = 0;
+        //     // let max = x;
+        //     // while(min <= max){
+        //     //     let midVal = Math.floor((min+max)/2);
+        //     //     if(midVal * midVal === x){
+        //     //         return midVal;
+        //     //     }else if(midVal * midVal > x){
+        //     //         max = midVal;
+        //     //     }else{
+        //     //         min = midVal;
+        //     //     }
+        //     // }
+        //     // return min;
+
+        //     // For all number
+        //     // var avg=(a,b)=>(a+b)/2,c=5,b;
+        //     // for(let i=0;i<20;i++){
+        //     //     b=x/c;
+        //     //     c=avg(b,c);
+        //     // }
+        //     // return Math.floor(c);
+
+        //     // for all number
+        //     // return Math.floor(x ** 0.5);
+        // }
+
+        // console.log(mySqrt(8));
+
+
+        // QS - 14
+        // function addBinary(a, b){
+        //     // single line code
+        //     // return (BigInt("0b"+a) + BigInt("0b"+b)).toString(2);
+
+
+        //     a = a.split("").reverse().join("");
+        //     b = b.split("").reverse().join("");
+        //     len = a.length > b.length ? a.length : b.length;
+        //     result = [];
+        //     for(let i = 0; i < len; i += 1){
+        //         num1 = Number(a[i] || 0);
+        //         num2 = Number(b[i]) || 0;
+        //         curr = Number(result[i]||0) + num1 + num2
+        //         if(curr >= 2){
+        //             result[i] = curr%2;
+        //             result.push(1)
+        //         }
+        //         else{
+        //             result[i] = curr
+        //         }
+        //     }
+        //     return result.reverse().join("")
+        // }
+
+
+        // PHP Solutions
+        // function addBinary(a, b){
+        //     // // Not for large binary number
+        //     // return decbin(intval(bindec($a) + bindec($b)));
+
+        //     // $result = [];
+        //     // $a = strrev($a);
+        //     // $b = strrev($b);
+        //     // $len = max(strlen($a), strlen($b));
+        //     // for($i = 0; $i < $len; $i++){
+        //     //     $num1 = intval($a[$i] || 0);
+        //     //     $num2 = intval($b[$i] || 0);
+        //     //     $curr = intval($result[$i]||0) + $num1 + $num2;
+        //     //         if($curr >= 2){
+        //     //             $result[$i] = $curr%2;
+        //     //             array_push($result,1);
+        //     //         }
+        //     //         else{
+        //     //             $result[$i] = $curr;
+        //     //         }
+        //     // }
+        //     // // return  $result;
+        //     // return  strrev(str_replace(",","",implode(',', $result)));
+
+
+        //     // $res = 0;
+        //     // $i = strlen($a) - 1;
+        //     // $j = strlen($b) - 1;
+        //     // $carry = 0;
+        //     // while($i >= 0 || $j >= 0) {
+        //     //     $sum = $carry;
+        //     //     if($i >= 0)
+        //     //         $sum += $a[$i--];
+        //     //     if($j >= 0)
+        //     //         $sum += $b[$j--];
+        //     //     $carry = $sum > 1 ? 1: 0;
+        //     //     $res.=strval($sum % 2);
+        //     // }
+        //     // if($carry)
+        //     //     $res .= strval($carry);
+        //     // $res = strrev($res);
+        //     // return substr($res,0,-1);
+
+
+        //     // $result = '';
+        //     // $heightBit = 0;
+        //     // $a = strrev($a);
+        //     // $b = strrev($b);
+        //     // //get max length of strings
+        //     // $len = max(strlen($a), strlen($b));
+
+        //     // for ($i = 0; $i < $len; $i++) {
+        //     //     $bitA = $a[$i] ?? 0;
+        //     //     $bitB = $b[$i] ?? 0;
+        //     //     $total = $bitA + $bitB + $heightBit;
+        //     //     $symbol = $total % 2;
+        //     //     $result = $symbol . $result;
+        //     //     $heightBit = (int) ($total / 2);
+        //     // }
+        //     // if ($heightBit) {
+        //     //   $result = '1' . $result;
+        //     // }
+        //     // return $result;
+        // }
+
+        // console.log(addBinary("11", "11"));
+
+
+        // QS - 15
+        // function average(salary){
+        //     salary.sort((a, b) => a - b);
+        //     salary.shift();
+        //     salary.pop();
+        //     const sum = salary.reduce((acc, curr) => acc + curr, 0);
+        //     const avg = sum / salary.length;
+        //     return avg;
+        // }
+        // console.log(average([4000,3000,1000,2000]));
+
+        // PHP Solutions
+        // function average(salary){  
+        //     sort($salary); // sorted array
+        //     array_shift($salary); // remove 1st element
+        //     array_pop($salary); // remove last element
+        //     //  calculate average value
+        //     $average_salary = array_sum($salary) / count($salary);
+        //     return $average_salary;
+        // }
+
+
+
+
+
+
+
+        
 
 
 
@@ -39,7 +567,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
     </script>
+    
 </body>
 </html>

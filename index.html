@@ -1098,7 +1098,7 @@
         //     if (n <= 2) return 1;
         //     return fib(n-1) + fib(n-2);
         // }
-        // console.log(fib(5))
+        // console.log(fib(3))
 
 
         // // // EX - 31
@@ -1138,28 +1138,6 @@
 
         // console.log(isPalindrome('amanaplanacanalpanama'));
 
-
-        // // // EX - 33
-        // function linearSearch(array, value){
-        //     if(array.length === 0) return -1
-        //     if(array.length === 1){
-        //         if(array[0] === value){
-        //             return 0;
-        //         }else{
-        //             return -1;
-        //         }
-        //     }
-        //     for(let i = 0; i < array.length ;i++){
-        //         if(array[i] == value){ 
-        //             return i;
-        //         } 
-        //     }
-        //     return -1;
-        // }
-
-        // console.log(linearSearch([15], 15));
-
-
         // // // EX - 34     
         // function someRecursive(array, callBack){
         //     if(array.length === 0) return false;
@@ -1172,7 +1150,7 @@
         // console.log(someRecursive([1234], 'callBack'))
 
 
-        // // // EX  - 35
+        // // // EX - 35
         // function flatten(oldArr){
         //     let str =  oldArr.toString();
         //     let array = JSON.parse("[" + str + "]");
@@ -1194,7 +1172,7 @@
 
         // console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]));
 
-        // // // EX  - 36
+        // // // EX - 36
         // function capitalizeWords (array) {
         //     let newArray = [];
         //     for(let i = 0; i<array.length; i++){
@@ -1218,7 +1196,156 @@
         // console.log(capitalizeWords(['car','taco','banana']));
 
 
+         // // // EX - 37
+        // function nestedEvenSum () {
+       
+        // }
+
+
+        // var obj1 = {
+        //     outer: 2,
+        //     obj: {
+        //         inner: 2,
+        //         otherObj: {
+        //         superInner: 2,
+        //         notANumber: true,
+        //         alsoNotANumber: "yup"
+        //         }
+        //     }
+        // }
+
+        // var obj2 = {
+        //     a: 2,
+        //     b: {b: 2, bb: {b: 3, bb: {b: 2}}},
+        //     c: {c: {c: 2}, cc: 'ball', ccc: 5},
+        //     d: 1,
+        //     e: {e: {e: 2}, ee: 'car'}
+        // };
+
+        // nestedEvenSum(obj1); // 6
+        // nestedEvenSum(obj2); // 10
         
+       
+
+
+
+        // // Searching Algorithms
+        // // Linear Search 
+        // This function accepts an array and a value
+        // Loop through the array and check if the current array element is equal to the value
+        // If it is, return the index at which the element is found
+        // If the value is never found, return -1
+
+        // // // EX - 33
+        // function linearSearch(array, value){
+        //     if(array.length === 0) return -1
+        //     if(array.length === 1){
+        //         if(array[0] === value){
+        //             return 0;
+        //         }else{
+        //             return -1;
+        //         }
+        //     }
+        //     for(let i = 0; i < array.length ;i++){
+        //         if(array[i] == value){ 
+        //             return i;
+        //         } 
+        //     }
+        //     return -1;
+        // }
+
+        // console.log(linearSearch([15], 15));
+
+
+        // // Binary Search
+        // Binary search is a much faster form of search
+        // Rather than eliminating one element at a time, you can eliminate half of the remaining elements at a time
+        // Binary search only works on sorted arrays!
+        // This function accepts a sorted array and a value
+        // Create a left pointer at the start of the array, and a right pointer at the end of the array
+        // While the left pointer comes before the right pointer:
+        // Create a pointer in the middle
+        // If you find the value you want, return the index
+        // If the value is too small, move the left pointer up
+        // If the value is too large, move the right pointer down
+        // If you never find the value, return -1
+
+        // // // EX - 38
+        // function binarySearch(arr, num){
+
+        //     if(arr.length === 0) return -1;
+
+        //     let left = 0;
+        //     let right = arr.length - 1;
+
+        //     // return Math.ceil((left+right)/2);
+        //     while(left <= right){
+        //         let middle = Math.floor((left+right)/2);
+        //         if(arr[middle] === num){
+        //             return middle;
+        //         }else if(arr[middle] < num){
+        //             left = middle + 1
+        //         }else {
+        //             right = middle - 1;
+        //         }
+        //     }
+        //     return -1;
+
+        // }
+
+        // console.log(binarySearch([1,2,3,4,5],2)); // 1
+        // console.log(binarySearch([1,2,3,4,5],3)); // 2
+        // console.log(binarySearch([1,2,3,4,5],5)); // 4
+        // console.log(binarySearch([1,2,3,4,5],6)); // -1
+        // console.log(binarySearch([ 5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99 ], 10)); // 2
+        // console.log(binarySearch([ 5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99 ], 95)); // 16
+        // console.log(binarySearch([ 5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99 ], 100)); // -1
+
+
+        // // // EX - 39
+        // function naiveSearch(long, short){
+        //     // var count = 0;
+        //     // for(var i = 0; i < long.length; i++){
+        //     //     for(var j = 0; j < short.length; j++){
+        //     //       if(short[j] !== long[i+j]) break;
+        //     //       if(j === short.length - 1) count++;
+        //     //     }
+        //     // }
+        //     // return count;
+
+        //     // or
+        //     return long.split(short).length - 1;
+        // }
+
+        // console.log(naiveSearch("lorie loled bceuicw lol", "lol"))
+
+
+
+        // // Sorting Algorithms
+        // Sorting is the process of rearranging the items in a collection (e.g. an array) so that the items are in some kind of order.
+
+        // var numArray = [140000, 104, 99];
+        // numArray.sort(function(a, b) {
+        //     return a - b; // 99, 104, 140000
+        //     // return b - a; //140000, 104, 99
+        // });
+        // // numArray.sort((a,b) =>  a-b ); // sort hand
+        // console.log(numArray);
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 

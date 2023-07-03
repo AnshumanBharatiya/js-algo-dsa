@@ -802,7 +802,7 @@
         // }
         // console.log(reverseString(["h","e","l","l","o"]));
 
-        // PHP Solution
+        // PHP Solutions
         // function reverseString(s){
         //     // $s = array_reverse($s, true);
         //     // return $s;
@@ -818,7 +818,7 @@
         
 
         // QS - 23
-        // PHP Solution
+        // PHP Solutions
         // function convertToTitle($columnNumber) {
         //     $title = '';
         //     while ($columnNumber > 0){
@@ -952,7 +952,7 @@
         //         return 0 
         // }
 
-        // PHP Solution
+        // PHP Solutions
         // function arraySign($nums) {
         //     $product = 1 ;
         //     foreach($nums as $val)
@@ -1191,6 +1191,321 @@
         // }
 
 
+        // QS - 34
+        // // this code is suitable for +ve value 
+        // var checkStraightLine = function(coordinates) {
+        //     if(coordinates.length <= 1) return false;
+        //     const n = coordinates.length;
+        //     // Calculate the cross product of consecutive vectors
+        //     // 1st array;
+        //     let x1 = coordinates[0][0];
+        //     let y1 = coordinates[0][1];
+        //     // 2nd array
+        //     let x2 = coordinates[1][0];
+        //     let y2 = coordinates[1][1];
+        //     let slope = (y2 - y1) / (x2 - x1);
+        //     for(let i = 2; i < n; i++){
+        //         let x = coordinates[i][0];
+        //         let y = coordinates[i][1];
+        //         let newSlope = (y - y1) / (x - x1);
+        //         if(slope !== newSlope || (x - x1) === 0){
+        //             return false
+        //         }
+        //     }
+        //     return true;
+        // };
+
+
+        // // for all value - better solutions
+        // var checkStraightLine = function(coordinates) {
+        //     const n = coordinates.length;
+        //     // Calculate the direction vector of the first two points
+        //     const x1 = coordinates[0][0];
+        //     const y1 = coordinates[0][1];
+        //     const x2 = coordinates[1][0];
+        //     const y2 = coordinates[1][1];
+        //     const initialVector = [x2 - x1, y2 - y1];
+        //     for (let i = 2; i < n; i++) {
+        //         const x = coordinates[i][0];
+        //         const y = coordinates[i][1];
+        //         const vector = [x - x1, y - y1];
+        //         const crossProduct = initialVector[0] * vector[1] - initialVector[1] * vector[0];
+        //         if (crossProduct !== 0) {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // };
+
+
+        // PHP Solutions
+        // function checkStraightLine($coordinates) {
+        //     if (count($coordinates) <= 1) {
+        //         return false;
+        //     }
+        //     $n = count($coordinates);
+        //     // 1st array
+        //     $x1 = $coordinates[0][0];
+        //     $y1 = $coordinates[0][1];
+        //     // 2nd array
+        //     $x2 = $coordinates[1][0];
+        //     $y2 = $coordinates[1][1];
+        //     $initialVector = [$x2 - $x1, $y2 - $y1];
+        //     for ($i = 2; $i < $n; $i++) {
+        //         $x = $coordinates[$i][0];
+        //         $y = $coordinates[$i][1];
+        //         $vector = [$x - $x1, $y - $y1];
+        //         $crossProduct = $initialVector[0] * $vector[1] - $initialVector[1] * $vector[0];
+        //         if ($crossProduct !== 0) {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+
+        // const coordinates1 = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]];
+        // console.log(checkStraightLine(coordinates1)); // Output: true
+
+        
+
+        // QS - 35
+        // var canMakeArithmeticProgression = function(arr) {
+        //     arr.sort(function(a, b) {
+        //         return a - b;
+        //     });
+        //     var dif = arr[1] - arr[0];
+        //     for(var i = 2; i < arr.length; i++) {
+        //         if(dif !== arr[i] - arr[i - 1]) {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // };
+
+
+
+        // QS - 36
+        // function countNegatives(grid){
+        //     let result = 0;
+        //     let i = 0;
+        //     let j = 0;
+        //     while (i < grid.length) {
+        //         if (grid[i][j] !== undefined && grid[i][j] < 0) {
+        //         result++;
+        //         }
+        //         j++;
+        //         if (j === grid[0].length) {
+        //         i++;
+        //         j = 0;
+        //         }
+        //     }
+        //     return result;
+        // }
+        // grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
+
+
+        // PHP Solutions
+        // function countNegatives($grid) {
+        //     $result = 0;
+        //     $mainArray = count($grid);
+        //     $innerArray = count($grid[0]);
+        //     $i = 0;
+        //     $j = 0;
+        //     while ($i < $mainArray) { // Use < instead of <= to stay within the valid range
+        //         if (isset($grid[$i][$j]) && $grid[$i][$j] < 0) { // Check if the array key exists before accessing it
+        //             $result++;
+        //         }
+        //         $j++;
+        //         if ($j == $innerArray) {
+        //             $i++;
+        //             $j = 0;
+        //         }
+        //     }
+        //     return $result;
+        // }
+
+        // function countNegatives($grid){
+        //     $mainArray = count($grid);
+        //     $innerArray = count($grid[0]);
+        //     $i = 0;
+        //     $result = 0;
+        //     while($i < $mainArray){
+        //         $j = 0;
+        //         while($j < $innerArray){
+        //             if($grid[$i][$j] < 0){
+        //                 $result++;
+        //             }
+        //             $j++;
+        //         }
+        //         $i++;
+        //     }
+        //     return $result;
+        // }
+
+
+
+        // QS - 37
+        // var deleteDuplicates = function(head) {
+        //     let current = head;
+        //     while (current !== null && current.next !== null) {
+        //         if (current.val === current.next.val) {
+        //         current.next = current.next.next;
+        //         } else {
+        //         current = current.next;
+        //         }
+        //     }
+        //     return head;
+        // };
+
+
+
+        // QS - 38
+        // PHP Solutions
+        // function majorityElement($nums) {
+        //     $count = 0;
+        //     $result = null;
+        //     foreach($nums as $num){
+        //         if($count == 0){
+        //             $result = $num;
+        //         }
+        //         $count += ($num == $result) ? 1 : -1;
+        //     }
+        //     return $result;
+        // }
+
+        // function majorityElement($nums) {
+        //         $numsValues = array_count_values($nums);
+        //         $maxVal = max($numsValues);
+        //         return array_search($maxVal, $numsValues);
+        //     }
+
+
+        // QS - 39
+        // function argumentsLength(...args){
+        //     return args.length;
+        // }
+        // console.log(argumentsLength(5));
+
+
+        // QS - 40
+        // var addTwoPromises = async function(promise1, promise2) {
+        //     // console.log(Promise.all([promise1, promise2]));
+        //     return (await Promise.all([promise1 ,promise2])).reduce((e,el)=>e+el)
+        //     // return Promise.all([promise1, promise2]).then((res) => res.reduce((acc, curr) => acc + curr, 0))
+        // };
+        // promise1 = new Promise(resolve => setTimeout(() => resolve(2), 20))
+        // promise2 = new Promise(resolve => setTimeout(() => resolve(5), 60))
+        // console.log(addTwoPromises(promise1,promise2 ));
+
+
+        // QS - 41
+        // var createHelloWorld = function() {
+        //     return ()=> "Hello World";
+        //     // return function(...args) {
+        //     //     return "Hello World"
+        //     // }
+        // };
+
+
+        // QS - 42
+        // function diagonalPrime(nums){
+        //     let maxPrime = 0;
+        //     for(let i = 0; i < nums.length; i++){
+        //         if(isPrime(nums[i][i])){
+        //             maxPrime = Math.max(maxPrime, nums[i][i]);
+        //         }
+                
+        //         if(isPrime(nums[i][nums.length - 1 - i])){
+        //             maxPrime = Math.max(maxPrime, nums[i][nums.length - 1 - i]);
+        //         }
+        //     }
+        //     return maxPrime;
+        // }
+
+        // function isPrime(num){
+        //     if (num <= 1) {
+        //         return false;
+        //     }
+        //     for (let i = 2; i * i <= num; i++) {
+        //         if (num % i === 0) {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+
+        // console.log(diagonalPrime( [[1,2,3],[5,6,7],[9,10,11]]));
+
+
+
+
+        // // QS - 43
+        // var hasGroupsSizeX = function(deck) {
+        //     // Count the frequencies of numbers in the array
+        //     const freqMap = {};
+        //     for (const num of deck) {
+        //         freqMap[num] = (freqMap[num] || 0) + 1;
+        //     }
+
+        //     // Find the greatest common divisor (GCD) of the frequencies
+        //     let gcd = freqMap[deck[0]];
+        //     for (const freq of Object.values(freqMap)) {
+        //         gcd = findGCD(gcd, freq);
+        //         if (gcd === 1) {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // };
+
+        // // Function to find the greatest common divisor (GCD) of two numbers
+        // function findGCD(a, b) {
+        //     while (b !== 0) {
+        //         const temp = b;
+        //         b = a % b;
+        //         a = temp;
+        //     }
+        //     return a;
+        // }
+        // console.log(hasGroupsSizeX([1,2,3,4,4,3,2,1]));
+
+
+        // PHP Solutions
+        // class Solution {
+    
+        //     function hasGroupsSizeX($deck) {
+        //         // Count the frequencies of numbers in the array
+        //         $freqMap = array();
+        //         foreach ($deck as $num) {
+        //             $freqMap[$num] = ($freqMap[$num] ?? 0) + 1;
+        //         }
+
+        //         // Find the greatest common divisor (GCD) of the frequencies
+        //         $gcd = $freqMap[$deck[0]];
+        //         foreach ($freqMap as $freq) {
+        //             $gcd = $this->findGCD($gcd, $freq);
+        //             if ($gcd === 1) {
+        //                 return false;
+        //             }
+        //         }
+
+        //         return true;
+        //     }
+
+        //     function findGCD($a, $b) {
+        //         while ($b !== 0) {
+        //             $temp = $b;
+        //             $b = $a % $b;
+        //             $a = $temp;
+        //         }
+        //         return $a;
+        //     }
+
+        // }
+
+
+
+        
 
 
 
@@ -1221,10 +1536,6 @@
 
 
 
-
-
-
- 
 
     </script>
     
